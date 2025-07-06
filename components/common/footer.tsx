@@ -4,11 +4,17 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-import { EMAIL, MENULINKS, SOCIAL_LINKS } from "../../constants";
+import { EMAIL, EMAIL_BODY, EMAIL_CONTACT, EMAIL_SUBJECT, generateGmailLink, generateMailtoLink, MENULINKS, SOCIAL_LINKS } from "../../constants";
 import Image from "next/image";
 import Button, { ButtonTypes } from "./button";
 
 const Footer = () => {
+  // Use mailto or Gmail fallback
+  const useGmailFallback = true;
+  
+  const contactLink = useGmailFallback
+    ? generateGmailLink(EMAIL_CONTACT, EMAIL_SUBJECT, EMAIL_BODY)
+    : generateMailtoLink(EMAIL_CONTACT, EMAIL_SUBJECT, EMAIL_BODY);
   const renderSocialIcons = (): React.ReactNode => {
     return Object.keys(SOCIAL_LINKS).map((el: keyof typeof SOCIAL_LINKS) => (
       <a
@@ -41,15 +47,12 @@ const Footer = () => {
           href="/ResumeJohnSalemRobert-FE(new).pdf"
         ></Button>
         <Button
-          classes="ml-3"
-          type={ButtonTypes.WHITE}
-          name="Let's Talk"
-          href={SOCIAL_LINKS.topmate}
-          otherProps={{
-            target: "_blank",
-            rel: "noreferrer",
-          }}
-        ></Button>
+                  classes="ml-3"
+                  type={ButtonTypes.PRIMARY}
+                  name="Let's Talk"
+                  href={contactLink}
+
+                ></Button>
       </div>
       {/* <h2 className="text-center text-sm sm:text-base mt-8">
         Designed and Developed with ❤️ by Ayush

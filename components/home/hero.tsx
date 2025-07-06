@@ -112,10 +112,6 @@ const HeroSection = React.memo(() => {
           type={ButtonTypes.PRIMARY}
           name="Let's Talk"
           href={contactLink}
-          // otherProps={{
-          //   target: "_blank",
-          //   rel: "noreferrer",
-          // }}
         ></Button>
       </div>
     </div>
