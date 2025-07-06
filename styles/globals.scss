@@ -248,3 +248,18 @@ footer {
 .section-title-sm {
   @apply uppercase tracking-widest text-gray-200 text-sm;
 }
+
+@keyframes techHighlightPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.85;
+  }
+}
+
+.tech-highlight {
+  animation: techHighlightPulse 2s ease-in-out infinite;
+}

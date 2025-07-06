@@ -12,6 +12,7 @@ import {
   ItemSize,
   MENULINKS,
   NodeTypes,
+  techKeywords,
   TIMELINE,
   TimelineNodeV2,
 } from "../../constants";
@@ -27,6 +28,48 @@ const strokeWidth = 2;
 const leftBranchX = 13;
 const curveLength = 150;
 const dotSize = 26;
+
+
+const highlightTechKeywords = (text: string): string => {
+  const sorted = Object.keys(techKeywords).sort((a, b) => b.length - a.length);
+  const regex = new RegExp(`\\b(${sorted.join("|")})\\b`, "g");
+
+  return text.replace(regex, (match: string) => {
+    const config = techKeywords[match];
+    if (!config) return match;
+
+    const { gradient, href } = config;
+    const [start, mid, end] = gradient;
+
+    // Hash function without spread
+    let hash = 0;
+    for (let i = 0; i < match.length; i++) {
+      hash += match.charCodeAt(i);
+    }
+
+    const duration = (4 + (hash % 6)).toFixed(2); // 4s to 9s
+    const delay = ((hash % 3) * 0.5).toFixed(2);  // 0s, 0.5s, 1s
+    const easings = ["ease", "ease-in", "ease-out", "ease-in-out"];
+    const easing = easings[hash % easings.length];
+
+    const style = `
+      background: linear-gradient(270deg, ${start}, ${mid}, ${end});
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove ${duration}s ${easing} ${delay}s infinite;
+      font-weight: bold;
+      display: inline-block;
+    `.trim();
+
+    const span = `<span style="${style}">${match}</span>`;
+    return href
+      ? `<a href="${href}" target="_blank" rel="noopener noreferrer">${span}</a>`
+      : span;
+  });
+};
+
+
 
 const TimelineSection = ({ isDesktop }: IDesktop) => {
   const [svgWidth, setSvgWidth] = useState(400);
@@ -55,7 +98,24 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
   const generateTimelineSvg = (timeline: Array<TimelineNodeV2>): string => {
     let index = 1;
     let y = dotSize / 2;
-    const timelineStyle = `<style>.str, .dot{stroke-width: ${strokeWidth}px}.anim-branch{stroke-dasharray: 186}</style>`;
+    // const timelineStyle = `<style>.str, .dot{stroke-width: ${strokeWidth}px}.anim-branch{stroke-dasharray: 186}</style>`;
+    const timelineStyle = `<style>
+  .str, .dot { stroke-width: ${strokeWidth}px }
+  .anim-branch { stroke-dasharray: 186 }
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+
+
+</style>`;
+
     let isDiverged = false;
 
     const timelineSvg = addNodeRefsToItems(timeline).reduce(
@@ -168,7 +228,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
       ? `<img src='${image}' class='h-8 mb-2' loading='lazy' width='100' height='32' alt='${image}' />`
       : "";
     const subtitleString = subtitle
-      ? `<p class='text-xl mt-2 text-gray-200 font-medium tracking-wide'>${subtitle}</p>`
+      ? `<p class='text-xl mt-2 text-gray-200 font-medium tracking-wide'>${highlightTechKeywords(subtitle)}</p>`
       : "";
 
     return `<foreignObject x=${foreignObjectX} y=${foreignObjectY} width=${foreignObjectWidth} 
@@ -447,6 +507,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 
     // Animation for Timeline SVG
     animateTimeline(timeline, duration);
+      // Delay to let DOM render innerHTML
   }, [
     timelineSvg,
     svgContainer,
@@ -465,7 +526,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
     >
       <Image
         className="w-full h-8"
-        src="/timeline/title-bar.svg"
+        src="/timeline/title-bar 1.svg"
         alt="Title bar"
         width={644}
         height={34}
@@ -500,7 +561,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 
   const renderSectionTitle = (): React.ReactNode => (
     <div className="flex flex-col">
-      <p className="section-title-sm seq">MILESTONES</p>
+      <p className="section-title-sm seq">My Experience</p>
       <h1 className="section-heading seq mt-2">Timeline</h1>
       <h2 className="text-2xl md:max-w-2xl w-full seq mt-2">
         A quick recap of proud moments

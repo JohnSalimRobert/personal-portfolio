@@ -1,35 +1,75 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# 🧠 John Salim – Full Stack Developer Portfolio
 
-## FOLIO
+Welcome to my portfolio – a showcase of real-world full stack projects, scalable architecture, performance optimization, and thoughtful design. This site is built to reflect my ability to move fast, write clean code, and build modern web apps that deliver real value.
 
-[Live Demo](https://ayushsingh.co.in/)
+---
 
-To cater to my goal of having my own portfolio website since 2016 🚀
+## 🚀 Tech Stack
 
-## How did I create this?
+This portfolio is built with a focus on modern web development tools and best practices:
 
-1. UI/UX is brainstormed using inspiration from winning portfolios from awwwards. High-fidelity mockup aggregating the ideas using Figma.
-2. This project uses React for simplicity to break down sections as components. Also uses next.js to achieve SSG. SVGs have been animated using CSS.
-3. Section scrolling and reveal animations uses GSAP. Card interactions use Tilt js. The timeline section was built using JS/SVGs and animated via GSAP.
-4. Optimised animations, layer management, repaints, and re-layouts using Chrome dev tools.
+* **React.js** + **Next.js** – Frontend framework with server-side rendering
+* **TypeScript** – Type safety and better DX
+* **Tailwind CSS** – Utility-first responsive UI
+* **Framer Motion** – Smooth animations
+* **Vercel** – Instant CI/CD and global deployments
 
-## How to run on local?
+---
 
-First, run the development server:
+## 📁 Folder Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
+├── components/      # Reusable UI components
+├── pages/           # Next.js page routes
+├── public/          # Static assets
+├── styles/          # Tailwind config and global styles
+├── utils/           # Utility functions
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-## Forked Versions from Community
+## 📸 Features
 
-Vue JS implemetation by sjtuli: [filio-vue](https://github.com/sjtuli/filio-vue)
-Same template with a slightly different flavor by shubh73: [devfolio](https://github.com/shubh73/devfolio)
+* ⚡ Blazing-fast load times (optimized via code splitting & lazy loading)
+* 🎨 Fully responsive design
+* 📄 SEO-optimized with meta tags and OpenGraph support
+* 🧠 Built with scalability and maintainability in mind
+* 🛠️ Real-world project highlights with clean code examples
 
-## A note on re-sharing
+---
 
-I have been refining the project using 7+ years of my learnings. While I appreciate the beauty of open source, due credits to the project will be appreciated if you plan to re-share the template. Copyright headers with author name should be included under the forked versions as well. Happy coding :)
+## 🌐 Live Demo
+
+Visit the live portfolio: [https://johnsalimrobert.com](https://johnsalimrobert.com)
+
+---
+
+## 🛠️ Running Locally
+
+```bash
+git clone https://github.com/yourusername/portfolio.git
+cd portfolio
+npm install
+npm run dev
+```
+
+---
+
+## 🧮 License
+
+This project is open-sourced under the [MIT License](https://opensource.org/licenses/MIT).
+
+<!-- // Project: folio | Author contact: https://www.linkedin.com/in/alphaayush/ | © Ayush Singh 2021,2022 -->
+
+---
+
+## 🤝 Let’s Connect
+
+* LinkedIn: [https://www.linkedin.com/in/reactdev-john-salim-robert/](https://www.linkedin.com/in/reactdev-john-salim-robert/)
+* GitHub: [https://github.com/JohnSalimRobert](https://github.com/JohnSalimRobert)
+* Portfolio: [https://johnsalimrobert.com](https://johnsalimrobert.com)
+
+---
+
+> Built with passion, performance, and purpose.

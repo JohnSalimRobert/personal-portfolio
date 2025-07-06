@@ -38,7 +38,7 @@ const Footer = () => {
             target: "_blank",
             rel: "noreferrer",
           }}
-          href="/Ayush_Resume.pdf"
+          href="/ResumeJohnSalemRobert-FE(new).pdf"
         ></Button>
         <Button
           classes="ml-3"
@@ -51,9 +51,9 @@ const Footer = () => {
           }}
         ></Button>
       </div>
-      <h2 className="text-center text-sm sm:text-base mt-8">
+      {/* <h2 className="text-center text-sm sm:text-base mt-8">
         Designed and Developed with ❤️ by Ayush
-      </h2>
+      </h2> */}
     </>
   );
 
