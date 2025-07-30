@@ -406,7 +406,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
     title: "Javascript Game Developer (SEDS)",
     size: ItemSize.SMALL,
     subtitle:
-      "Worked part-time at Smart Engineering & Design Solutions (SEDS) building immersive, browser-based training games, focusing on interactivity, user experience, and performance across devices.",
+      "Worked at Smart Engineering & Design Solutions (SEDS) building immersive, browser-based training games, focusing on interactivity, user experience, and performance across devices.",
     image: "/timeline/seds-logo.jpg",
     slideImage: "/timeline/seds.png",
     shouldDrawLine: true,
